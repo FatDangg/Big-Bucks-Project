@@ -1,350 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Big Bucks Project | IB HL Mastery</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" href="/favicon.png" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="container hero__content">
-        <div class="hero__copy">
-          <p class="hero__eyebrow">Official IB® Content Partner</p>
-          <h1>
-            Big Bucks Project delivers IB HL & SL past papers with guided
-            tagging, insights, and dedicated support.
-          </h1>
-          <p>
-            We’re bringing verified IB past papers across Math, Sciences,
-            Economics, Computer Science, ESS, and more—powered by smart ingestion
-            workflows, curriculum-aligned tagging, and analytics designed for
-            ambitious students and teachers.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big Bucks Project | IB HL Mastery</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1f4dee',
+            'primary-dark': '#1536a8',
+            secondary: '#0f172a',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Header with Login -->
+  <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50 transition-colors duration-200">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <h1 class="text-2xl font-bold text-primary dark:text-blue-400" data-i18n="siteName">Big Bucks Project</h1>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#subjects" class="hidden sm:inline text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition" data-i18n="navSubjects">Subjects</a>
+        <a href="#waitlist" class="hidden sm:inline text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-blue-400 transition" data-i18n="navWaitlist">Waitlist</a>
+        
+        <!-- Language Toggle -->
+        <button id="lang-toggle" class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition font-medium">
+          EN
+        </button>
+        
+        <!-- Dark Mode Toggle -->
+        <button id="theme-toggle" class="p-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition">
+          <svg id="theme-icon-light" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"></path>
+          </svg>
+          <svg id="theme-icon-dark" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+        </button>
+        
+        <button id="login-btn" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium" data-i18n="loginBtn">
+          Login
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 py-20 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row items-center gap-12">
+        
+        <!-- Hero Content -->
+        <div class="flex-1 space-y-6">
+          <span class="inline-block px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 text-sm font-semibold rounded-full uppercase tracking-wider" data-i18n="heroEyebrow">
+            Official IB® Content Partner
+          </span>
+          <h2 class="text-4xl md:text-5xl font-bold text-secondary dark:text-white leading-tight" data-i18n="heroTitle">
+            Master IB HL & SL with Official Past Papers
+          </h2>
+          <p class="text-lg text-gray-600 dark:text-gray-300" data-i18n="heroDesc">
+            Access verified IB past papers across Math, Sciences, Economics, and Computer Science with AI-powered insights and curriculum-aligned tagging.
           </p>
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#waitlist">Join the waitlist</a>
-            <a class="btn btn--secondary" href="#contact">Talk to us</a>
-          </div>
-          <div class="hero__legal">
-            <strong>New:</strong> Licensed by the International Baccalaureate
-            Organization to publish official past paper questions.
+          <div class="flex flex-wrap gap-4">
+            <a href="#waitlist" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium shadow-md" data-i18n="heroCTA1">
+              Join Waitlist
+            </a>
+            <a href="#contact" class="px-6 py-3 bg-white dark:bg-gray-800 text-primary dark:text-blue-400 border-2 border-primary dark:border-blue-400 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition font-medium" data-i18n="heroCTA2">
+              Contact Us
+            </a>
           </div>
         </div>
-        <div class="hero__card">
-          <p class="hero__card-label">Sample Question Preview</p>
-          <div class="hero__card-body">
-            <h3>Physics HL Paper 1</h3>
-            <p class="hero__card-meta">May 2024 TZ1&nbsp;&mdash;&nbsp;Question 8</p>
-            <p>
-              An electric motor has 1.8 kJ of energy transferred to it in
-              0.50 minutes. The efficiency of the motor is 40%. What is the
-              useful power output?
-              <br />
-              A. 1.5 W &nbsp; B. 24 W &nbsp; C. 150 W &nbsp; D. 360 W
+
+        <!-- Sample Question Card -->
+        <div class="flex-1 w-full max-w-lg">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+            <div class="text-xs font-semibold text-primary dark:text-blue-400 mb-3 uppercase tracking-wide" data-i18n="sampleLabel">Sample Question</div>
+            <h3 class="text-xl font-bold mb-2 dark:text-white">Physics HL Paper 1</h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">May 2024 TZ1 • Question 8</p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4" data-i18n="sampleQuestion">
+              An electric motor has 1.8 kJ of energy transferred to it in 0.50 minutes. The efficiency is 40%. What is the useful power output?
             </p>
-            <p class="hero__card-tags">
-              Tags: <span>Energy</span> · <span>Power</span>
-            </p>
-            <div class="hero__answer-shell">
-              <button
-                class="answer-toggle"
-                type="button"
-                data-answer-target="hero-answer"
-                aria-expanded="false"
-              >
-                Reveal markscheme + AI explanation
-              </button>
-              <div class="hero__answer" id="hero-answer" hidden>
-                <div class="hero__answer-content">
-                  <p>
-                    <strong>Answer:</strong>
-                    <span class="hero__answer-highlight">B. 24 W</span>
-                  </p>
-                  <p>
-                    AI reasoning:
-                    <code>1.8&nbsp;kJ&nbsp;/&nbsp;0.50&nbsp;min = 1800&nbsp;J&nbsp;/&nbsp;30&nbsp;s = 60&nbsp;W</code>.
-                    With 40% efficiency:
-                    <code>0.40&nbsp;&times;&nbsp;60&nbsp;W = 24&nbsp;W</code>.
-                    The only option matching 24 W is B.
-                  </p>
-                </div>
-              </div>
+            <div class="flex flex-wrap gap-2 text-xs text-gray-600 dark:text-gray-400 mb-4">
+              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded" data-i18n="tagEnergy">Energy</span>
+              <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded" data-i18n="tagPower">Power</span>
+            </div>
+            <button id="reveal-answer" class="w-full px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition font-medium" data-i18n="revealBtn">
+              Reveal Answer
+            </button>
+            <div id="answer-section" class="hidden mt-4 p-4 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-800">
+              <p class="font-semibold text-gray-900 dark:text-white mb-2"><span data-i18n="answerLabel">Answer:</span> <span class="text-primary dark:text-blue-400">B. 24 W</span></p>
+              <p class="text-sm text-gray-700 dark:text-gray-300" data-i18n="answerExplanation">
+                Calculation: 1800 J ÷ 30 s = 60 W. With 40% efficiency: 0.40 × 60 W = 24 W
+              </p>
             </div>
           </div>
         </div>
+
       </div>
-    </header>
+    </div>
+  </section>
 
-    <main>
-      <section class="highlights">
-        <div class="container highlights__grid">
-          <article>
-            <h3>Exam-grade materials</h3>
-            <p>
-              Every question is sourced from official IB exams with our new
-              publication license, so you can rely on authentic rigor.
-            </p>
-          </article>
-          <article>
-            <h3>Curriculum-aligned bank</h3>
-            <p>
-              Past paper questions sorted by IB subject, paper, and syllabus
-              topics so teachers and students can drill exactly what they need.
-            </p>
-          </article>
-          <article>
-            <h3>Curated beta access</h3>
-            <p>
-              Invite-only testers get early access, feature previews, and direct
-              chat with the founding team.
-            </p>
-          </article>
+  <!-- Features -->
+  <section class="py-16 bg-white dark:bg-gray-800 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+        <div class="flex-1 min-w-[250px] max-w-sm text-center">
+          <h3 class="text-xl font-bold mb-2 text-secondary dark:text-white" data-i18n="feature1Title">Official Content</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="feature1Desc">Licensed IB exam materials with verified authenticity</p>
         </div>
-      </section>
-
-      <section class="subjects" id="subjects">
-        <div class="container">
-          <div class="section-heading">
-            <p class="section-heading__eyebrow">Subjects launching first</p>
-            <h2>Built for high-performing IB HL &amp; SL cohorts</h2>
-            <p>
-              Each subject includes structured notes, past paper walkthroughs,
-              and tag-aware recommendations. More HL/SL subjects are on the
-              roadmap.
-            </p>
-          </div>
-          <div class="subjects__grid">
-            <article>
-              <h3>Physics HL</h3>
-              <p>
-                Mechanics, waves, fields, energy, and option topics with
-                diagram-ready assets and calculator flags.
-              </p>
-              <ul>
-                <li>Paper 1–3 coverage</li>
-                <li>Topic + skill tagging</li>
-                <li>Worked solution pipeline</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Chemistry HL</h3>
-              <p>
-                Stoichiometry, energetics, kinetics, organic chemistry, and data
-                booklet references tied to every question.
-              </p>
-              <ul>
-                <li>Structured question metadata</li>
-                <li>Diagram and data assets</li>
-                <li>Future lab practice sets</li>
-              </ul>
-            </article>
-            <article>
-              <h3>Math AA HL</h3>
-              <p>
-                Analysis & Approaches HL past papers with sub-topic cues and
-                calculator policy indicators for every problem.
-              </p>
-              <ul>
-                <li>Calculator rule tagging</li>
-                <li>Difficulty & time estimates</li>
-                <li>Future adaptive problem sets</li>
-              </ul>
-            </article>
-          </div>
+        <div class="flex-1 min-w-[250px] max-w-sm text-center">
+          <h3 class="text-xl font-bold mb-2 text-secondary dark:text-white" data-i18n="feature2Title">Curriculum-Aligned</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="feature2Desc">Questions sorted by subject, paper, and syllabus topics</p>
         </div>
-      </section>
-
-      <section class="timeline">
-        <div class="container">
-          <div class="section-heading section-heading--center">
-            <p class="section-heading__eyebrow">How it works</p>
-            <h2>Invite-only beta, transparent roadmap</h2>
-          </div>
-          <div class="timeline__grid">
-            <article>
-              <p class="timeline__step">01</p>
-              <h3>Join the waitlist</h3>
-              <p>
-                Tell us which subjects you care about. We prioritize educators
-                and IB cohorts who bring feedback.
-              </p>
-            </article>
-            <article>
-              <p class="timeline__step">02</p>
-              <h3>Secure access</h3>
-              <p>
-                Receive an invite code linked to your email. Early users get
-                direct support from the founding team.
-              </p>
-            </article>
-            <article>
-              <p class="timeline__step">03</p>
-              <h3>Shape the platform</h3>
-              <p>
-                Share feature requests via the admin feedback loop; our ingestion
-                tooling enables fast iteration and publishing.
-              </p>
-            </article>
-          </div>
+        <div class="flex-1 min-w-[250px] max-w-sm text-center">
+          <h3 class="text-xl font-bold mb-2 text-secondary dark:text-white" data-i18n="feature3Title">Beta Access</h3>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="feature3Desc">Early users get direct support from our team</p>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="waitlist" id="waitlist">
-        <div class="container waitlist__grid">
-          <div>
-            <p class="section-heading__eyebrow">Get early access</p>
-            <h2>Join the invite-only waitlist</h2>
-            <p>
-              We onboard IB teachers, coordinators, and high-performing cohorts
-              in small waves so we can give personalized support.
-            </p>
-          </div>
-          <form class="card" id="waitlist-form">
-            <label>
-              Full name
-              <input name="name" type="text" placeholder="Alex Chen" required />
-            </label>
-            <label>
-              Email
-              <input
-                name="email"
-                type="email"
-                placeholder="you@email.com"
-                required
-              />
-            </label>
-            <label>
-              Preferred subject
-              <select name="subject" required>
-                <option value="">Select one</option>
-                <option value="physics-hl">Physics HL</option>
-                <option value="physics-sl">Physics SL</option>
-                <option value="chemistry-hl">Chemistry HL</option>
-                <option value="chemistry-sl">Chemistry SL</option>
-                <option value="math-aa-hl">Math AA HL</option>
-                <option value="math-aa-sl">Math AA SL</option>
-                <option value="economics-hl">Economics HL</option>
-                <option value="economics-sl">Economics SL</option>
-                <option value="biology-hl">Biology HL</option>
-                <option value="biology-sl">Biology SL</option>
-                <option value="cs-hl">Computer Science HL</option>
-                <option value="cs-sl">Computer Science SL</option>
-                <option value="ess-sl">Environmental Systems &amp; Societies SL</option>
-                <option value="other">Other (tell us below)</option>
+  <!-- Subjects -->
+  <section id="subjects" class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 text-sm font-semibold rounded-full uppercase tracking-wider mb-3" data-i18n="subjectsEyebrow">
+          Launching First
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary dark:text-white mb-4" data-i18n="subjectsTitle">Available Subjects</h2>
+        <p class="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto" data-i18n="subjectsDesc">Past papers with structured solutions and topic tagging</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="flex-1 min-w-[280px] max-w-sm bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+          <h3 class="text-xl font-bold mb-3 text-secondary dark:text-white" data-i18n="subject1Title">Physics HL</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4" data-i18n="subject1Desc">Mechanics, waves, fields, energy with diagram assets</p>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li data-i18n="subject1Feature1">✓ Paper 1–3 coverage</li>
+            <li data-i18n="subject1Feature2">✓ Topic tagging</li>
+            <li data-i18n="subject1Feature3">✓ Worked solutions</li>
+          </ul>
+        </div>
+        <div class="flex-1 min-w-[280px] max-w-sm bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+          <h3 class="text-xl font-bold mb-3 text-secondary dark:text-white" data-i18n="subject2Title">Chemistry HL</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4" data-i18n="subject2Desc">Stoichiometry, energetics, kinetics, organic chemistry</p>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li data-i18n="subject2Feature1">✓ Question metadata</li>
+            <li data-i18n="subject2Feature2">✓ Diagram assets</li>
+            <li data-i18n="subject2Feature3">✓ Data booklet refs</li>
+          </ul>
+        </div>
+        <div class="flex-1 min-w-[280px] max-w-sm bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+          <h3 class="text-xl font-bold mb-3 text-secondary dark:text-white" data-i18n="subject3Title">Math AA HL</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4" data-i18n="subject3Desc">Analysis & Approaches with calculator policy indicators</p>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li data-i18n="subject3Feature1">✓ Calculator tagging</li>
+            <li data-i18n="subject3Feature2">✓ Difficulty estimates</li>
+            <li data-i18n="subject3Feature3">✓ Adaptive problem sets</li>
+          </ul>
+        </div>
+        <div class="flex-1 min-w-[280px] max-w-sm bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+          <h3 class="text-xl font-bold mb-3 text-secondary dark:text-white" data-i18n="subject4Title">Computer Science HL</h3>
+          <p class="text-gray-600 dark:text-gray-300 mb-4" data-i18n="subject4Desc">Programming, data structures, algorithms, system design</p>
+          <ul class="space-y-2 text-sm text-gray-700 dark:text-gray-300">
+            <li data-i18n="subject4Feature1">✓ Code examples</li>
+            <li data-i18n="subject4Feature2">✓ Algorithm analysis</li>
+            <li data-i18n="subject4Feature3">✓ IA guidance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waitlist -->
+  <section id="waitlist" class="py-16 bg-white dark:bg-gray-800 transition-colors duration-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <span class="inline-block px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 text-sm font-semibold rounded-full uppercase tracking-wider mb-3" data-i18n="waitlistEyebrow">
+            Get Early Access
+          </span>
+          <h2 class="text-3xl font-bold text-secondary dark:text-white mb-4" data-i18n="waitlistTitle">Join the Waitlist</h2>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="waitlistDesc">We onboard teachers and students in small waves for personalized support.</p>
+        </div>
+        <div class="flex-1 w-full">
+          <form id="waitlist-form" class="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700 space-y-4 transition-colors duration-200">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formNameLabel">Full Name</label>
+              <input name="name" type="text" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Alex Chen" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formEmailLabel">Email</label>
+              <input name="email" type="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="you@email.com" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formSubjectLabel">Preferred Subject</label>
+              <select name="subject" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                <option value="" data-i18n="formSubjectOption0">Select one</option>
+                <option value="physics-hl" data-i18n="formSubjectOption1">Physics HL</option>
+                <option value="chemistry-hl" data-i18n="formSubjectOption2">Chemistry HL</option>
+                <option value="math-aa-hl" data-i18n="formSubjectOption3">Math AA HL</option>
+                <option value="cs-hl" data-i18n="formSubjectOption4">Computer Science HL</option>
+                <option value="other" data-i18n="formSubjectOption5">Other</option>
               </select>
-            </label>
-            <label>
-              Are you currently attending an IB school?
-              <select name="ibSchoolStatus" required>
-                <option value="">Select one</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-                <option value="prospective">Planning to enroll</option>
-              </select>
-            </label>
-            <label>
-              Tell us about yourself (optional)
-              <textarea
-                name="message"
-                rows="3"
-                placeholder="e.g., IB coordinator supporting May 2025 cohort, focusing on Physics SL"
-              ></textarea>
-            </label>
-            <button type="submit" class="btn btn--primary">
-              Request invite
+            </div>
+            <button type="submit" class="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium shadow-md" data-i18n="waitlistSubmitBtn">
+              Request Invite
             </button>
-            <p class="form-status" id="waitlist-status" aria-live="polite"></p>
+            <p id="waitlist-status" class="text-sm text-center" aria-live="polite"></p>
           </form>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="contact" id="contact">
-        <div class="container contact__grid">
-          <div>
-            <p class="section-heading__eyebrow">Need something specific?</p>
-            <h2>Talk directly to the founding team</h2>
-            <p>
-              Whether you are an IB coordinator, teacher, or student, we would
-              love to hear how we can support your upcoming exam cycle.
-            </p>
-          </div>
-          <form class="card" id="contact-form">
-            <label>
-              Name
-              <input name="name" type="text" required />
-            </label>
-            <label>
-              Email
-              <input name="email" type="email" required />
-            </label>
-            <label>
-              Message
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Share goals, timelines, or integration needs..."
-                required
-              ></textarea>
-            </label>
-            <button type="submit" class="btn btn--secondary">
-              Send message
+  <!-- Contact -->
+  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row gap-8 items-center">
+        <div class="flex-1">
+          <span class="inline-block px-3 py-1 bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-400 text-sm font-semibold rounded-full uppercase tracking-wider mb-3" data-i18n="contactEyebrow">
+            Get in Touch
+          </span>
+          <h2 class="text-3xl font-bold text-secondary dark:text-white mb-4" data-i18n="contactTitle">Contact Our Team</h2>
+          <p class="text-gray-600 dark:text-gray-300" data-i18n="contactDesc">Questions about integration, timelines, or specific needs? We're here to help.</p>
+        </div>
+        <div class="flex-1 w-full">
+          <form id="contact-form" class="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-md space-y-4 transition-colors duration-200">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formNameLabel">Name</label>
+              <input name="name" type="text" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formEmailLabel">Email</label>
+              <input name="email" type="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="formMessageLabel">Message</label>
+              <textarea name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Share your goals or questions..."></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 bg-secondary dark:bg-primary text-white rounded-lg hover:bg-secondary/90 dark:hover:bg-primary-dark transition font-medium shadow-md" data-i18n="contactSubmitBtn">
+              Send Message
             </button>
-            <p class="form-status" id="contact-status" aria-live="polite"></p>
+            <p id="contact-status" class="text-sm text-center" aria-live="polite"></p>
           </form>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
 
-      <section class="team">
-        <div class="container">
-          <div class="section-heading section-heading--center">
-            <p class="section-heading__eyebrow">Who’s behind Big Bucks Project</p>
-            <h2>Three admins, one mission-driven build</h2>
-          </div>
-          <div class="team__grid">
-            <article>
-              <h3>Daniel Chen</h3>
-              <p>Product & curriculum lead</p>
-              <p>
-                Designs the learning journey, curates subject releases, and
-                drives teacher partnerships.
-              </p>
-            </article>
-            <article>
-              <h3>Kyle Lee</h3>
-              <p>Engineering & ingestion lead</p>
-              <p>
-                Builds the OCR → LLM ingestion pipeline, manages Firebase/Stripe,
-                and ensures data integrity.
-              </p>
-            </article>
-            <article>
-              <h3>Leon Lee</h3>
-              <p>Operations & community</p>
-              <p>
-                Handles onboarding, feedback loops, and keeps every beta tester
-                heard along the way.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-    </main>
+  <!-- Footer -->
+  <footer class="bg-secondary dark:bg-gray-950 text-white py-8 transition-colors duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <strong class="text-lg" data-i18n="footerName">Big Bucks Project</strong>
+        <p class="text-gray-400 text-sm">© <span id="year"></span> <span data-i18n="footerCopyright">All rights reserved.</span></p>
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a href="mailto:chenhomedaniel@gmail.com" class="hover:text-primary dark:hover:text-blue-400 transition" data-i18n="footerContact">Contact</a>
+        <a href="#" class="hover:text-primary dark:hover:text-blue-400 transition" data-i18n="footerTerms">Terms</a>
+      </div>
+    </div>
+  </footer>
 
-    <footer class="footer">
-      <div class="container footer__grid">
+  <!-- Login Modal - Simplified MVP -->
+  <div id="login-modal" class="fixed inset-0 bg-black/50 items-center justify-center z-50 p-4" style="display: none;">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full shadow-2xl transition-colors duration-200">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold text-secondary dark:text-white" data-i18n="loginTitle">Login</h3>
+        <button id="close-modal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-2xl">&times;</button>
+      </div>
+      <form id="login-form" class="space-y-4">
         <div>
-          <strong>Big Bucks Project</strong>
-          <p>Copyright © <span id="year"></span>. All rights reserved.</p>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="loginUsernameLabel">Username</label>
+          <input type="text" name="username" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="your-username" />
         </div>
-        <div class="footer__links">
-          <a href="mailto:chenhomedaniel@gmail.com">chenhomedaniel@gmail.com</a>
-          <a href="#">Terms</a>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1" data-i18n="loginPasswordLabel">Password</label>
+          <input type="password" name="password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="••••••••" />
         </div>
-      </div>
-    </footer>
+        <button type="submit" class="w-full px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition font-medium shadow-md" data-i18n="loginSubmitBtn">
+          Sign In
+        </button>
+        <p class="text-sm text-center text-gray-600 dark:text-gray-400">
+          <span data-i18n="loginNoAccount">Don't have an account?</span> <a href="#waitlist" id="join-waitlist-link" class="text-primary dark:text-blue-400 hover:underline" data-i18n="loginJoinWaitlist">Join the waitlist</a>
+        </p>
+      </form>
+    </div>
+  </div>
 
-    <script type="module" src="main.js"></script>
-  </body>
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBRiQilSMsCtkRfU8eE_-ZoGPBb3mAyHZc",
+      authDomain: "big-bucks-project.firebaseapp.com",
+      projectId: "big-bucks-project",
+      storageBucket: "big-bucks-project.firebasestorage.app",
+      messagingSenderId: "936438266969",
+      appId: "1:936438266969:web:28d5049a770947ed230548",
+      measurementId: "G-CVC6B08RW5",
+    };
+
+    // Initialize Firebase
+    let firestore = null;
+    try {
+      const app = initializeApp(firebaseConfig);
+      firestore = getFirestore(app);
+    } catch (error) {
+      console.error("Firebase initialization failed:", error);
+    }
+
+    // Translations
+    const translations = {
+      en: {
+        siteName: "Big Bucks Project",
+        navSubjects: "Subjects",
+        navWaitlist: "Waitlist",
+        loginBtn: "Login",
+        heroEyebrow: "Official IB® Content Partner",
+        heroTitle: "Master IB HL & SL with Official Past Papers",
+        heroDesc: "Access verified IB past papers across Math, Sciences, Economics, and Computer Science with AI-powered insights and curriculum-aligned tagging.",
+        heroCTA1: "Join Waitlist",
+        heroCTA2: "Contact Us",
+        sampleLabel: "Sample Question",
+        sampleQuestion: "An electric motor has 1.8 kJ of energy transferred to it in 0.50 minutes. The efficiency is 40%. What is the useful power output?",
+        tagEnergy: "Energy",
+        tagPower: "Power",
+        revealBtn: "Reveal Answer",
+        answerLabel: "Answer:",
+        answerExplanation: "Calculation: 1800 J ÷ 30 s = 60 W. With 40% efficiency: 0.40 × 60 W = 24 W",
+        feature1Title: "Official Content",
+        feature1Desc: "Licensed IB exam materials with verified authenticity",
+        feature2Title: "Curriculum-Aligned",
+        feature2Desc: "Questions sorted by subject, paper, and syllabus topics",
+        feature3Title: "Beta Access",
+        feature3Desc: "Early users get direct support from our team",
+        subjectsEyebrow: "Launching First",
+        subjectsTitle: "Available Subjects",
+        subjectsDesc: "Past papers with structured solutions and topic tagging",
+        subject1Title: "Physics HL",
+        subject1Desc: "Mechanics, waves, fields, energy with diagram assets",
+        subject1Feature1: "✓ Paper 1–3 coverage",
+        subject1Feature2: "✓ Topic tagging",
+        subject1Feature3: "✓ Worked solutions",
+        subject2Title: "Chemistry HL",
+        subject2Desc: "Stoichiometry, energetics, kinetics, organic chemistry",
+        subject2Feature1: "✓ Question metadata",
+        subject2Feature2: "✓ Diagram assets",
+        subject2Feature3: "✓ Data booklet refs",
+        subject3Title: "Math AA HL",
+        subject3Desc: "Analysis & Approaches with calculator policy indicators",
+        subject3Feature1: "✓ Calculator tagging",
+        subject3Feature2: "✓ Difficulty estimates",
+        subject3Feature3: "✓ Adaptive problem sets",
+        subject4Title: "Computer Science HL",
+        subject4Desc: "Programming, data structures, algorithms, system design",
+        subject4Feature1: "✓ Code examples",
+        subject4Feature2: "✓ Algorithm analysis",
+        subject4Feature3: "✓ IA guidance",
+        waitlistEyebrow: "Get Early Access",
+        waitlistTitle: "Join the Waitlist",
+        waitlistDesc: "We onboard teachers and students in small waves for personalized support.",
+        formNameLabel: "Full Name",
+        formEmailLabel: "Email",
+        formSubjectLabel: "Preferred Subject",
+        formSubjectOption0: "Select one",
+        formSubjectOption1: "Physics HL",
+        formSubjectOption2: "Chemistry HL",
+        formSubjectOption3: "Math AA HL",
+        formSubjectOption4: "Computer Science HL",
+        formSubjectOption5: "Other",
+        waitlistSubmitBtn: "Request Invite",
+        contactEyebrow: "Get in Touch",
+        contactTitle: "Contact Our Team",
+        contactDesc: "Questions about integration, timelines, or specific needs? We're here to help.",
+        formMessageLabel: "Message",
+        contactSubmitBtn: "Send Message",
+        footerName: "Big Bucks Project",
+        footerCopyright: "All rights reserved.",
+        footerContact: "Contact",
+        footerTerms: "Terms",
+        loginTitle: "Login",
+        loginUsernameLabel: "Username",
+        loginPasswordLabel: "Password",
+        loginSubmitBtn: "Sign In",
+        loginNoAccount: "Don't have an account?",
+        loginJoinWaitlist: "Join the waitlist",
+      },
+      zh: {
+        siteName: "大錢項目",
+        navSubjects: "科目",
+        navWaitlist: "候補名單",
+        loginBtn: "登入",
+        heroEyebrow: "官方 IB® 內容合作夥伴",
+        heroTitle: "通過官方歷年試題掌握 IB HL 和 SL",
+        heroDesc: "訪問經過驗證的IB歷年試題，涵蓋數學、科學、經濟學和電腦科學，配備AI驅動的洞察和課程對齊的標籤。",
+        heroCTA1: "加入候補名單",
+        heroCTA2: "聯繫我們",
+        sampleLabel: "示例問題",
+        sampleQuestion: "一台電動機在0.50分鐘內傳遞了1.8 kJ的能量。效率為40%。有用的功率輸出是多少？",
+        tagEnergy: "能量",
+        tagPower: "功率",
+        revealBtn: "顯示答案",
+        answerLabel: "答案：",
+        answerExplanation: "計算：1800 J ÷ 30 s = 60 W。效率40%：0.40 × 60 W = 24 W",
+        feature1Title: "官方內容",
+        feature1Desc: "經過驗證的官方IB考試材料",
+        feature2Title: "課程對齊",
+        feature2Desc: "按科目、試卷和教學大綱主題分類的問題",
+        feature3Title: "測試版訪問",
+        feature3Desc: "早期用戶獲得我們團隊的直接支持",
+        subjectsEyebrow: "首批推出",
+        subjectsTitle: "可用科目",
+        subjectsDesc: "帶有結構化解決方案和主題標記的歷年試題",
+        subject1Title: "物理 HL",
+        subject1Desc: "力學、波、場、能量，配備圖表資源",
+        subject1Feature1: "✓ 試卷 1-3 覆蓋",
+        subject1Feature2: "✓ 主題標記",
+        subject1Feature3: "✓ 詳細解答",
+        subject2Title: "化學 HL",
+        subject2Desc: "化學計量、能量學、動力學、有機化學",
+        subject2Feature1: "✓ 問題元數據",
+        subject2Feature2: "✓ 圖表資源",
+        subject2Feature3: "✓ 數據手冊參考",
+        subject3Title: "數學 AA HL",
+        subject3Desc: "分析與方法，配備計算器政策指示",
+        subject3Feature1: "✓ 計算器標記",
+        subject3Feature2: "✓ 難度估計",
+        subject3Feature3: "✓ 自適應問題集",
+        subject4Title: "電腦科學 HL",
+        subject4Desc: "編程、數據結構、算法、系統設計",
+        subject4Feature1: "✓ 代碼示例",
+        subject4Feature2: "✓ 算法分析",
+        subject4Feature3: "✓ IA 指導",
+        waitlistEyebrow: "獲得早期訪問",
+        waitlistTitle: "加入候補名單",
+        waitlistDesc: "我們分批次引入教師和學生，以提供個性化支持。",
+        formNameLabel: "全名",
+        formEmailLabel: "電子郵件",
+        formSubjectLabel: "首選科目",
+        formSubjectOption0: "選擇一個",
+        formSubjectOption1: "物理 HL",
+        formSubjectOption2: "化學 HL",
+        formSubjectOption3: "數學 AA HL",
+        formSubjectOption4: "電腦科學 HL",
+        formSubjectOption5: "其他",
+        waitlistSubmitBtn: "請求邀請",
+        contactEyebrow: "取得聯繫",
+        contactTitle: "聯繫我們的團隊",
+        contactDesc: "有關集成、時間表或特定需求的問題？我們隨時為您提供幫助。",
+        formMessageLabel: "留言",
+        contactSubmitBtn: "發送消息",
+        footerName: "大錢項目",
+        footerCopyright: "版權所有。",
+        footerContact: "聯繫",
+        footerTerms: "條款",
+        loginTitle: "登入",
+        loginUsernameLabel: "用戶名",
+        loginPasswordLabel: "密碼",
+        loginSubmitBtn: "登入",
+        loginNoAccount: "還沒有賬戶？",
+        loginJoinWaitlist: "加入候補名單",
+      },
+    };
+
+    // Initialize theme and language
+    let currentTheme = localStorage.getItem("theme") || "light";
+    let currentLang = localStorage.getItem("lang") || "en";
+
+    // Apply saved theme on load
+    if (currentTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+
+    // Update language function
+    function updateLanguage(lang) {
+      const elements = document.querySelectorAll("[data-i18n]");
+      elements.forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (key && translations[lang][key]) {
+          if (element.tagName === "INPUT" || element.tagName === "TEXTAREA") {
+            element.placeholder = translations[lang][key];
+          } else {
+            element.textContent = translations[lang][key];
+          }
+        }
+      });
+    }
+
+    // Apply saved language on load
+    updateLanguage(currentLang);
+
+    // Set current year
+    const yearEl = document.getElementById("year");
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear().toString();
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        currentTheme = currentTheme === "light" ? "dark" : "light";
+        document.documentElement.classList.toggle("dark");
+        localStorage.setItem("theme", currentTheme);
+      });
+    }
+
+    // Language toggle
+    const langToggle = document.getElementById("lang-toggle");
+    if (langToggle) {
+      langToggle.textContent = currentLang === "en" ? "EN" : "中文";
+      langToggle.addEventListener("click", () => {
+        currentLang = currentLang === "en" ? "zh" : "en";
+        langToggle.textContent = currentLang === "en" ? "EN" : "中文";
+        localStorage.setItem("lang", currentLang);
+        updateLanguage(currentLang);
+      });
+    }
+
+    // Form submission
+    async function saveFormData(collectionName, payload) {
+      if (!firestore) {
+        throw new Error("Firestore not initialized");
+      }
+      await addDoc(collection(firestore, collectionName), {
+        ...payload,
+        createdAt: serverTimestamp(),
+        source: "landing-page",
+      });
+    }
+
+    function attachFormHandler(formId, statusId, collectionName) {
+      const form = document.getElementById(formId);
+      const status = document.getElementById(statusId);
+      if (!form || !status) return;
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        showStatus(status, "Sending...", "info");
+
+        try {
+          await saveFormData(collectionName, payload);
+          showStatus(status, "Message received! We'll be in touch shortly.", "success");
+          form.reset();
+        } catch (error) {
+          console.error(`Failed to submit ${collectionName}:`, error);
+          showStatus(status, "Something went wrong. Please try again or email us directly.", "error");
+        }
+      });
+    }
+
+    attachFormHandler("waitlist-form", "waitlist-status", "waitlist");
+    attachFormHandler("contact-form", "contact-status", "contactMessages");
+
+    // Reveal answer toggle
+    const revealBtn = document.getElementById("reveal-answer");
+    const answerSection = document.getElementById("answer-section");
+    if (revealBtn && answerSection) {
+      revealBtn.addEventListener("click", () => {
+        answerSection.classList.toggle("hidden");
+        const isHidden = answerSection.classList.contains("hidden");
+        revealBtn.textContent = isHidden
+          ? translations[currentLang].revealBtn
+          : currentLang === "en" ? "Hide Answer" : "隱藏答案";
+      });
+    }
+
+    // Login modal
+    const loginBtn = document.getElementById("login-btn");
+    const loginModal = document.getElementById("login-modal");
+    const closeModalBtn = document.getElementById("close-modal");
+    const loginForm = document.getElementById("login-form");
+    const joinWaitlistLink = document.getElementById("join-waitlist-link");
+
+    function closeModal() {
+      if (loginModal) {
+        loginModal.style.display = "none";
+      }
+    }
+
+    if (loginBtn && loginModal) {
+      loginBtn.addEventListener("click", () => {
+        loginModal.style.display = "flex";
+      });
+    }
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener("click", closeModal);
+    }
+
+    if (loginModal) {
+      loginModal.addEventListener("click", (e) => {
+        if (e.target === loginModal) {
+          closeModal();
+        }
+      });
+    }
+
+    if (joinWaitlistLink) {
+      joinWaitlistLink.addEventListener("click", closeModal);
+    }
+
+    if (loginForm) {
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(loginForm);
+        const username = formData.get("username");
+        const password = formData.get("password");
+
+        if (username && password) {
+          const successMessage = currentLang === "en" 
+            ? `Welcome back, ${username}!` 
+            : `歡迎回來，${username}！`;
+          alert(successMessage);
+          closeModal();
+          loginForm.reset();
+          localStorage.setItem("loggedInUser", username);
+          if (loginBtn) {
+            loginBtn.textContent = username;
+          }
+        } else {
+          const errorMessage = currentLang === "en"
+            ? "Please enter both username and password"
+            : "請輸入用戶名和密碼";
+          alert(errorMessage);
+        }
+      });
+    }
+
+    // Check if user is already logged in
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser && loginBtn) {
+      loginBtn.textContent = loggedInUser;
+    }
+
+    // Status message display
+    function showStatus(element, message, type) {
+      element.textContent = message;
+      element.classList.add("status-show");
+
+      if (type === "success") {
+        element.style.color = "#10b981";
+      } else if (type === "error") {
+        element.style.color = "#ef4444";
+      } else {
+        element.style.color = "#6b7280";
+      }
+
+      setTimeout(() => {
+        element.classList.remove("status-show");
+        element.textContent = "";
+      }, 3500);
+    }
+  </script>
+</body>
 </html>
